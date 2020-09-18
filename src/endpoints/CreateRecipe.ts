@@ -7,11 +7,11 @@ import { IdGenerator } from "../services/IdGenerator"
 
 export const CreateRecipe = async (req: Request, res: Response) => {
     try {
-            const token: string = req.headers.authorization as string
-            const title: string = req.body.title as string
-            const description: string = req.body.description as string
+        const token: string = req.headers.authorization as string
+        const title: string = req.body.title as string
+        const description: string = req.body.description as string
 
-        if(!title || !description) {
+        if(!title || !description || !token) {
             throw new Error("Insert all required information")
         }
 

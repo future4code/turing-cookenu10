@@ -11,7 +11,7 @@ export const getFeed = async (req: Request, res: Response ) => {
         const authenticator = new Authenticator()
         const authenticationData = authenticator.getData(token)
 
-        if(!authenticationData) {
+        if(!authenticationData || !token) {
             throw new Error('Please fill in all fields')
         }
 

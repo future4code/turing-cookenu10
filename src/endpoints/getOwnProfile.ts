@@ -5,8 +5,14 @@ import { Authenticator } from "../services/Authenticator"
 
 export const getownprofile = async (req: Request, res: Response) => {
     try {
+        const token: string = req.headers.authorization as string
+
+        if(!token) {
+          throw new Error('Please fill in all fields')
+        }
+        
         const authenticator = new Authenticator()
-        const decodeToken = authenticator.decodeToken(req.headers.authorization as string)
+        const decodeToken = authenticator.decodeToken(token)
 
         const userDataBase = new UserDatabase()
         const result = await userDataBase.getUserById(decodeToken.id)
