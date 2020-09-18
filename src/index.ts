@@ -19,12 +19,12 @@ app.use(express.json())
 app.post('/signup', signup)
 app.post('/login', login)
 app.get('/user/profile', getownprofile)
+app.get('/user/feed', getFeed)
 app.get('/user/:id', getProfileById)
 app.post('/recipe', CreateRecipe)
 app.get('/recipe/:id', getRecipeById)
 app.post('/user/follow', Follow)
 app.post('/user/unfollow', Unfollow)
-app.get('/users/feed', getFeed)
 
 const server = app.listen(process.env.PORT || 3000, () => {
     if (server) {
